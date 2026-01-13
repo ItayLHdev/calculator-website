@@ -1,7 +1,9 @@
 # calculator-website
 
 - [ ] make backspace useable
+- [x] - [ ] make . useable
+- [ ] add keyboard support
 - [ ] make % useable
 - [ ] make +/- useable
-- [ ] make . useable
-- [ ] add PEMDAS
+- [ ] - [ ] add history calculations
+- [ ] ~~add PEMDAS~~ nah

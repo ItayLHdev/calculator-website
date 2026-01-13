@@ -53,9 +53,11 @@ operators.forEach((sign) => {
 const display = document.querySelector(".display");
 function updateNumbers(val) {
     if (isOperatorClicked) {
+        if (val === "." && secondNum.includes(".")) return;
         secondNum += val;
         display.textContent += val;
     } else {
+        if (val === "." && firstNum.includes(".")) return;
         firstNum += val;
         display.textContent += val;
     }
