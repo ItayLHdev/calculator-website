@@ -4,3 +4,4 @@
 - [ ] make % useable
 - [ ] make +/- useable
 - [ ] make . useable
+- [ ] add PEMDAS

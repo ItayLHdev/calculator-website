@@ -11,11 +11,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (b === 0) return "Something Went Wrong :(";
     return a / b;
 }
 
 let firstNum = "";
-let secondNum = "0";
+let secondNum = "";
 let operator = "";
 let isOperatorClicked = false;
 
@@ -42,7 +43,6 @@ operators.forEach((sign) => {
         if (firstNum && operator && secondNum) {
             firstNum = operate(firstNum, operator, secondNum);
             secondNum = ""
-            display.textContent = firstNum
         }
         operator = sign.textContent;
         display.textContent += operator;
@@ -64,15 +64,29 @@ function updateNumbers(val) {
 const digits = document.querySelectorAll(".digit");
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
-        updateNumbers(digit.textContent)
+        display.textContent = firstNum + operator + secondNum;
+        updateNumbers(digit.textContent);
     });
 })
 
+function roundNumber(number, digits) {
+    const multiple = Math.pow(10, digits);
+    const roundedNum = Math.round(number * multiple) / multiple;
+    return roundedNum;
+}
+
 const equalSign = document.querySelector(".equal")
 equalSign.addEventListener("click", () => {
+    if (!firstNum && !operator && !secondNum) return;
     firstNum = operate(firstNum, operator, secondNum)
-    display.textContent = firstNum
+    if (firstNum === "Something Went Wrong :(") {
+        display.textContent = "Something Went Wrong :(";
+    } else {
+        display.textContent = roundNumber(firstNum, 5);
+    }
+    firstNum = "";
     secondNum = "";
+    operator = "";
     isOperatorClicked = false;
 })
 
@@ -81,6 +95,7 @@ function clearCalculator() {
     firstNum = "";
     secondNum = "";
     operator = "";
+    isOperatorClicked = false;
     display.textContent = "";
 }
 clearBtn.addEventListener("click", clearCalculator)
