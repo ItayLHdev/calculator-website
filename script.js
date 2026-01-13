@@ -15,7 +15,7 @@ function divide(a, b) {
 }
 
 let firstNum = "";
-let secondNum = "";
+let secondNum = "0";
 let operator = "";
 let isOperatorClicked = false;
 
@@ -39,9 +39,14 @@ function operate(a = 0, operator, b = 0) {
 const operators = document.querySelectorAll(".operator");
 operators.forEach((sign) => {
     sign.addEventListener("click", () => {
+        if (firstNum && operator && secondNum) {
+            firstNum = operate(firstNum, operator, secondNum);
+            secondNum = ""
+            display.textContent = firstNum
+        }
         operator = sign.textContent;
         display.textContent += operator;
-        isOperatorClicked = !isOperatorClicked;
+        isOperatorClicked = true;
     })
 })
 
