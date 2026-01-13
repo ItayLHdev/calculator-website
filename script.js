@@ -101,3 +101,16 @@ function clearCalculator() {
     display.textContent = "";
 }
 clearBtn.addEventListener("click", clearCalculator)
+
+const undoBtn = document.querySelector(".undo");
+undoBtn.addEventListener("click", () => {
+    if (isOperatorClicked) {
+        const slicedSecondNum = secondNum.slice(0, -1);
+        display.textContent = display.textContent.replace(secondNum, slicedSecondNum);
+        secondNum = slicedSecondNum;
+    } else {
+        slicedFirstNum = firstNum.slice(0, -1);
+        display.textContent = display.textContent.replace(firstNum, slicedFirstNum);
+        firstNum = slicedFirstNum;
+    }
+})
