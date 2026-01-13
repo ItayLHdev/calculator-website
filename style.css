@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    height: 100vh !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    background-color: black;
+    border-radius: 25px;
+    padding: 10px;
+    height: 850px;
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.display {
+    height: 300px;
+    width: 400px;
+    font-size: 50px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; 
+}
+
+.buttons {
+    height: 500px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons button {
+    background-color: hsl(0, 0%, 18%);
+    width: 90px;
+    height: 90px;
+    border: none;
+    font-size: 50px;
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls {
+    background-color: hsl(0, 0%, 35%) !important;
+}
+
+.operator {
+    background-color: hsl(34, 100%, 50%) !important;
+}
