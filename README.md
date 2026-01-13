@@ -1,7 +1,7 @@
 # calculator-website
 
-- [ ] make backspace useable
-- [x] - [ ] make . useable
+- [x] make backspace useable
+- [x]make . useable
 - [ ] add keyboard support
 - [ ] make % useable
 - [ ] make +/- useable

@@ -62,6 +62,7 @@ body {
     justify-content: center;
     align-items: center;
     transition: all 0.1s ease;
+    user-select: none;
 }
 
 .buttons button:hover {

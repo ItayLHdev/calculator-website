@@ -28,8 +28,10 @@ function operate(a = 0, operator, b = 0) {
             return add(a, b);
         case "-":
             return subtract(a, b);
+        case "*":
         case "×":
             return multiply(a, b);
+        case "/":
         case "÷":
             return divide(a, b);
         default:
@@ -66,7 +68,9 @@ function updateNumbers(val) {
 const digits = document.querySelectorAll(".digit");
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
-        display.textContent = firstNum + operator + secondNum;
+        if (!firstNum && !operator && !secondNum) {
+            display.textContent = "";
+        }
         updateNumbers(digit.textContent);
     });
 })
@@ -105,12 +109,37 @@ clearBtn.addEventListener("click", clearCalculator)
 const undoBtn = document.querySelector(".undo");
 undoBtn.addEventListener("click", () => {
     if (isOperatorClicked) {
-        const slicedSecondNum = secondNum.slice(0, -1);
-        display.textContent = display.textContent.replace(secondNum, slicedSecondNum);
-        secondNum = slicedSecondNum;
+        secondNum = secondNum.slice(0, -1);
     } else {
-        slicedFirstNum = firstNum.slice(0, -1);
-        display.textContent = display.textContent.replace(firstNum, slicedFirstNum);
-        firstNum = slicedFirstNum;
+        firstNum = firstNum.slice(0, -1);
+    }
+    display.textContent = firstNum + operator + secondNum;
+})
+
+document.addEventListener("keydown", (e) => {
+    e.preventDefault();
+    if (!firstNum && !operator && !secondNum) {
+        display.textContent = "";
+    }
+    if ("1234567890.".includes(e.key)) {
+        updateNumbers(e.key);
+    }
+    if ("+-/*".includes(e.key)) {
+        if (firstNum && operator && secondNum) {
+            firstNum = operate(firstNum, operator, secondNum);
+            secondNum = ""
+        }
+        operator = e.key;
+        display.textContent += operator;
+        isOperatorClicked = true;
+    }
+    if (e.key === "Enter") {
+        equalSign.click();
+    }
+    if (e.key === "Backspace") {
+        undoBtn.click();
+    }
+    if (e.key.toLowerCase() === "c") {
+        clearCalculator();
     }
 })
