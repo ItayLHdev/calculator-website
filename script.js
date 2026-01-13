@@ -75,6 +75,20 @@ digits.forEach((digit) => {
     });
 })
 
+const plusMinusBtn = document.querySelector(".plus-minus");
+function togglePlusMinus(num) {
+    if (!num || num === 0) return num;
+    return num.startsWith("-") ? num.slice(1) : `-${num}`;
+}
+plusMinusBtn.addEventListener("click", () => {
+    if (isOperatorClicked) {
+        secondNum = togglePlusMinus(secondNum);
+    } else {
+        firstNum = togglePlusMinus(firstNum);
+    }
+    display.textContent = firstNum + operator + secondNum;
+});
+
 function roundNumber(number, digits) {
     const multiple = Math.pow(10, digits);
     const roundedNum = Math.round(number * multiple) / multiple;

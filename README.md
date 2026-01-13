@@ -4,6 +4,6 @@
 - [x] make . useable
 - [x] add keyboard support
 - [ ] make % useable
-- [ ] make +/- useable
+- [x] make +/- useable
 - [ ] add history calculations
 - [ ] ~~add PEMDAS~~ nah
